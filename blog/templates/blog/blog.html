@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block title %} Blog: {{blog.name}} {% endblock %}
+{% block content %}
+<section class="blog-page">
+  <div class="blog-page__content">
+    <div
+      class="blog-page__image"
+      style="background-image:url({{blog.image.url}})"
+    ></div>
+    <h2>{{blog.name}}</h2>
+    <span>{{blog.category}}</span>
+    <p>{{blog.content}}</p>
+  </div>
+  <div class="blog-page__comments-form">
+    <h2>Reviews</h2>
+    <form action = "{{blog.get_absolute_url}}" method = "POST">
+    {% csrf_token %} {{form.as_div}}
+    <div class = "blog-page__comments-form__buttons">
+        <button type = "submit">Send</button>
+    <div>
+    </form>
+  </div>
+</section>
+
+<div class = "review-content">
+    <ul class = "review-list">
+        {% for review in blog.reviews.all %}
+            <li class = "review-item">
+                <h2>{{review.username}}</h2>
+                <p>{{review.content}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

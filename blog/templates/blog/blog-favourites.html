@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+{% block title %} Favourites {% endblock %}
+
+<section class="blog-list">
+  <ul class="blog-list__list">
+    {% if blogs.count == 0 %}
+    <h2 class="blog-list__list-message">No items were found!</h2>
+    {% endif %} {% for blog in blogs %}
+      {% include 'parts/blog-item.html' %}
+    {% endfor %}
+  </ul>
+  {% include 'blog/parts/aside.html' %}
+</section>
+{% endblock %}

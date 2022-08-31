@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>{% block title %}Unknown{% endblock %}</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-block">
+        <a href="{% url 'feed' %}">MyBlog</a>
+      </div>
+      <div class="header-block">
+        <ul class="header-block__list">
+          <li class="header-block__list-item">
+            <a href="{% url 'blog-list' %}">Feed</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+        <div class="wrapper">
+            {% block content %} {% endblock %}
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/c7b30a7322.js" crossorigin="anonymous"></script>
+  </body>
+</html>

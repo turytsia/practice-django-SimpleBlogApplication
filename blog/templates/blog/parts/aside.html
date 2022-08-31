@@ -1,0 +1,7 @@
+<aside class="aside">
+    <form class="aside-search__form">
+      {% csrf_token %} {{ aside_form }}
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    <a href = "{% url 'favourites' %}">Favourites</a>
+  </aside>

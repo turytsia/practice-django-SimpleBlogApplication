@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+
+{% block title %} Feed {% endblock %}
+
+{% block content %}
+<section class="author">
+  <div class = "author-img" style = "background-image:url({{author.image.url}})"></div>
+  <div class="author-content">
+    <h3>{{author.first_name}} {{author.last_name}}</h3>
+    <span>{{author.blogs.count}} blogs available!</span>
+  </div>
+</section>
+<section class="author-feed">
+  <h2>Top blogs <a href = "{% url 'blog-list' %}">View more...</a></h2>
+  <ul class="author-feed__list">
+    {% for blog in blogs %}
+      {% include 'parts/blog-item.html' %}
+    {% endfor %}
+  </ul>
+  <section>{% endblock %}</section>
+</section>

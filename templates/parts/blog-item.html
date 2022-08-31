@@ -1,0 +1,15 @@
+<li class="blog-list__item">
+  <img src="{{blog.image.url}}" alt="{{blog.name}}" />
+  <div class="blog-list__item-content">
+    <h4>{{blog.name}}</h4>
+    <p>{{blog.content|truncatechars:255}}</p>
+    <form method="POST" action="{% url 'favourites' %}">
+      {% csrf_token %}
+      <input type="hidden" name = "id" value="{{blog.id}}" />
+      <button class = "button-favourites" type="submit"><i class="fa-solid fa-star"></i></button>
+    </form>
+    <div class="blog-list__item-buttons">
+      <a href="{% url 'blog' blog.slug %}">View</a>
+    </div>
+  </div>
+</li>
